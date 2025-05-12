@@ -1,11 +1,24 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import MotionWrapperDelay from './components/FramerMotion/MotionWrapperDelay';
 
 export default function Home() {
   return (
     <div className="bg-gradient-to-br from-purple-600 to-indigo-700 min-h-screen flex items-center justify-center">
-      <div className="container mx-auto p-6 max-w-2xl bg-white bg-opacity-90 rounded-2xl shadow-2xl">
-        <h1 className="text-4xl font-extrabold text-center text-gray-800 mb-4">Welcome to AI Chat</h1>
+      <div className="container mx-auto p-6 max-w-2xl gradient-background2 bg-opacity-90 rounded-2xl shadow-2xl">
+        <MotionWrapperDelay
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          variants={{
+            hidden: { opacity: 0, y: 100 },
+            visible: { opacity: 1, y: 0 },
+          }}
+        >
+          <h1 className="text-4xl font-extrabold text-center gradient-title mb-4">Welcome to AI Chat</h1>
+        </MotionWrapperDelay>
+
         <Image
           src="/landing.jpg"
           alt="AI Chat Illustration"
