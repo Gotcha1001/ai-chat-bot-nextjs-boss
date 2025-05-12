@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+#chat-container {
+  max-height: 500px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #a0aec0 #edf2f7;
+}
+
+#chat-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+#chat-container::-webkit-scrollbar-track {
+  background: #edf2f7;
+}
+
+#chat-container::-webkit-scrollbar-thumb {
+  background: #a0aec0;
+  border-radius: 4px;
+}
