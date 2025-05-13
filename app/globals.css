@@ -3,6 +3,30 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@layer base {
+  :root {
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
 #chat-container {
   max-height: 500px;
   overflow-y: auto;
@@ -83,7 +107,8 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  animation: shiftBackground 90s linear infinite,
+  animation:
+    shiftBackground 90s linear infinite,
     zoomBackground 8s ease-in-out infinite;
   width: 100%;
   height: 100%;
@@ -129,7 +154,8 @@
   height: 100vh;
   z-index: -10;
 
-  animation: shiftBackground 90s linear infinite,
+  animation:
+    shiftBackground 90s linear infinite,
     zoomBackground 20s ease-in-out infinite alternate;
 }
 
@@ -163,7 +189,8 @@
 @media (min-width: 1280px) {
   .animated-bg {
     background-size: 130% auto; /* Slightly larger to show more of the movement */
-    animation: shiftBackground 50s linear infinite,
+    animation:
+      shiftBackground 50s linear infinite,
       /* Speed up movement on large screens */ zoomBackground 20s ease-in-out
         infinite alternate;
   }
@@ -173,7 +200,8 @@
 @media (min-width: 768px) and (max-width: 1280px) {
   .animated-bg {
     background-size: cover; /* Maintains full coverage */
-    animation: shiftBackground 70s linear infinite,
+    animation:
+      shiftBackground 70s linear infinite,
       /* Slightly faster movement for mid-range */ zoomBackground 20s
         ease-in-out infinite alternate;
   }
@@ -575,8 +603,6 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -606,6 +632,8 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
 }
 
 .dark {

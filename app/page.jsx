@@ -1,11 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import MotionWrapperDelay from './components/FramerMotion/MotionWrapperDelay';
+import { UserButton } from '@clerk/nextjs';
 
 export default function Home() {
   return (
     <div className="bg-gradient-to-br from-purple-600 to-indigo-700 min-h-screen flex items-center justify-center">
       <div className="container mx-auto p-6 max-w-2xl gradient-background2 bg-opacity-90 rounded-2xl shadow-2xl">
+        <UserButton />
         <MotionWrapperDelay
           initial="hidden"
           whileInView="visible"
