@@ -459,6 +459,8 @@ import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import FeatureMotionWrapper from "../components/FramerMotion/FeatureMotionWrapperMap";
+import MotionWrapperDelay from "../components/FramerMotion/MotionWrapperDelay";
 
 const cleanMarkdown = (text) => {
     let cleanedText = text;
@@ -613,9 +615,19 @@ export default function Chat() {
 
             <div className="flex-grow flex items-center justify-center py-4 sm:py-6">
                 <div className="w-full px-4 sm:px-6 flex flex-col space-y-4 sm:space-y-6">
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center text-white drop-shadow-lg">
-                        Chat with AI
-                    </h1>
+                    <MotionWrapperDelay
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                        variants={{
+                            hidden: { opacity: 0, y: -100 },
+                            visible: { opacity: 1, y: 0 },
+                        }}
+                    >     <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-center text-white drop-shadow-lg">
+                            Chat with AI
+                        </h1> </MotionWrapperDelay>
+
                     <div className="text-center">
                         <Link href="/">
                             <Button className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-xl shadow-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105">
@@ -629,17 +641,21 @@ export default function Chat() {
                         className="w-full p-4 bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl shadow-2xl max-h-96 overflow-y-auto border border-white/20"
                     >
                         {messages.slice(1).map((msg, index) => (
-                            <div
-                                key={index}
-                                className={`${msg.role === "user"
-                                    ? "ml-auto bg-gradient-to-r from-gray-300 to-gray-400 text-gray-800"
-                                    : "bg-white bg-opacity-20 text-white"
-                                    } animate-fade-in m-2 p-3 rounded-xl max-w-[90%] sm:max-w-[75%] shadow-md transition-all duration-300`}
-                            >
+                            <FeatureMotionWrapper index={index} key={index}>
+
                                 <div
-                                    dangerouslySetInnerHTML={{ __html: msg.content.replace(/\n/g, "<br>") }}
-                                />
-                            </div>
+                                    key={index}
+                                    className={`${msg.role === "user"
+                                        ? "ml-auto bg-gradient-to-r from-gray-300 to-gray-400 text-gray-800"
+                                        : "bg-white bg-opacity-20 text-black"
+                                        } animate-fade-in m-2 p-3 rounded-xl max-w-[90%] sm:max-w-[75%] shadow-md transition-all duration-300`}
+                                >
+                                    <div
+                                        dangerouslySetInnerHTML={{ __html: msg.content.replace(/\n/g, "<br>") }}
+                                    />
+                                </div>
+                            </FeatureMotionWrapper>
+
                         ))}
                     </div>
                     <div className={isLoading ? "flex flex-col sm:flex-row justify-center items-center" : "hidden"}>
