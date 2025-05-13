@@ -1,7 +1,8 @@
-import { Button } from "@/components/ui/button";
+
 import Link from "next/link";
 import React from "react";
 import MotionWrapperDelay from "./components/FramerMotion/MotionWrapperDelay";
+import { Button } from "@/components/ui/button";
 
 
 
@@ -40,7 +41,7 @@ const NotFound = () => {
                         Oops! The page you&apos;re looking for doesn&apos;t exist or has
                         been removed.
                     </p>
-                    <Link href="/dashboard">
+                    <Link href="/">
                         <Button
                             variant="sex1"
                             className="bg-blue-500 text-white hover:bg-blue-600 transition duration-300 transform hover:scale-105"
