@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/sidebar"
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { ChartAreaIcon, ChartBar, ChartBarBigIcon, ChartBarStacked, LayoutDashboard, Settings2Icon, WalletCards } from 'lucide-react'
+import { ChartAreaIcon, ChartBar, ChartBarBigIcon, ChartBarIcon, ChartBarStacked, LayoutDashboard, Settings2Icon, WalletCards } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import FeatureMotionWrapper from '@/app/components/FramerMotion/FeatureMotionWrapperMap'
@@ -29,22 +29,27 @@ export function AppSidebar() {
 
     const MenuOptions = [
         {
-            title: 'Chat',
+            title: 'Default Chat',
             icon: LayoutDashboard,
             path: '/chat'
         },
         {
-            title: 'OpenAI Chat Funny',
-            icon: ChartBarBigIcon,
+            title: 'Chosen Ai Mood',
+            icon: ChartBarIcon,
             path: '/chat/open-ai'
         },
+        // {
+        //     title: 'OpenAI Chat Funny',
+        //     icon: ChartBarBigIcon,
+        //     path: '/chat/funny'
+        // },
+        // {
+        //     title: 'Gemmini Sarcastic',
+        //     icon: ChartBarStacked,
+        //     path: '/chat/sarcastic'
+        // },
         {
-            title: 'Gemmini Sarcastic',
-            icon: ChartBarStacked,
-            path: '/chat/open-ai'
-        },
-        {
-            title: 'My Chats',
+            title: 'My Chats History',
             icon: ChartAreaIcon,
             path: '/chat/my-chats'
         },
