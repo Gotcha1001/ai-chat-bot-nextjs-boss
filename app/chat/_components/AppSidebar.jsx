@@ -53,16 +53,16 @@ export function AppSidebar() {
             icon: ChartAreaIcon,
             path: '/chat/my-chats'
         },
-        {
-            title: 'Billing',
-            icon: WalletCards,
-            path: '/chat/billing'
-        },
-        {
-            title: 'Settings',
-            icon: Settings2Icon,
-            path: '/chat/settings'
-        },
+        // {
+        //     title: 'Billing',
+        //     icon: WalletCards,
+        //     path: '/chat/billing'
+        // },
+        // {
+        //     title: 'Settings',
+        //     icon: Settings2Icon,
+        //     path: '/chat/settings'
+        // },
 
     ]
 

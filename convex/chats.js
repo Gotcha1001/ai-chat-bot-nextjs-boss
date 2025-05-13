@@ -58,3 +58,10 @@ export const deleteChat = mutation({
     return { success: true };
   },
 });
+
+export const getChatById = query({
+  args: { chatId: v.id("chats") },
+  handler: async (ctx, args) => {
+    return await ctx.db.get(args.chatId);
+  },
+});

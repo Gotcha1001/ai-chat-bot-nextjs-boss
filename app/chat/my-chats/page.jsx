@@ -78,7 +78,7 @@ export default function ChatHistory() {
                         </Link>
                     </div>
 
-                    <div className="space-y-4">
+                    <div className="space-y-4 flex flex-col gap-4">
                         {chats === undefined && (
                             <p className="text-white text-center">Loading chat history...</p>
                         )}
@@ -95,36 +95,38 @@ export default function ChatHistory() {
                             </p>
                         )}
                         {chats?.map((chat) => (
-                            <Card
-                                key={chat._id}
-                                className="bg-white bg-opacity-90 shadow-md"
-                            >
-                                <CardHeader>
-                                    <CardTitle className="text-lg font-semibold text-gray-800">
-                                        {chat.personality.charAt(0).toUpperCase() +
-                                            chat.personality.slice(1)}{" "}
-                                        Chat
-                                    </CardTitle>
-                                    <p className="text-sm text-gray-500">
-                                        {new Date(chat.timestamp).toLocaleString()}
-                                    </p>
-                                </CardHeader>
-                                <CardContent>
-                                    <p className="text-gray-700 truncate">
-                                        {chat.messages[chat.messages.length - 1]?.content ||
-                                            "No messages"}
-                                    </p>
-                                    <Button
-                                        variant="destructive"
-                                        className="mt-2"
-                                        onClick={() => handleDelete(chat._id)}
-                                        disabled={deletingChatId === chat._id}
-                                    >
-                                        <Trash2 className="w-4 h-4 mr-2" />
-                                        {deletingChatId === chat._id ? "Deleting..." : "Delete"}
-                                    </Button>
-                                </CardContent>
-                            </Card>
+                            <Link href={`/chat/my-chats/${chat._id}`} key={chat._id}>
+                                <Card className="bg-white bg-opacity-90 shadow-md hover:bg-opacity-100 transition gap-5">
+                                    <CardHeader>
+                                        <CardTitle className="text-lg font-semibold text-gray-800">
+                                            {chat.personality.charAt(0).toUpperCase() +
+                                                chat.personality.slice(1)}{" "}
+                                            Chat
+                                        </CardTitle>
+                                        <p className="text-sm text-gray-500">
+                                            {new Date(chat.timestamp).toLocaleString()}
+                                        </p>
+                                    </CardHeader>
+                                    <CardContent>
+                                        <p className="text-gray-300 truncate">
+                                            {chat.messages[chat.messages.length - 1]?.content ||
+                                                "No messages"}
+                                        </p>
+                                        <Button
+                                            variant="destructive"
+                                            className="mt-2"
+                                            onClick={(e) => {
+                                                e.preventDefault(); // Prevent Link navigation
+                                                handleDelete(chat._id);
+                                            }}
+                                            disabled={deletingChatId === chat._id}
+                                        >
+                                            <Trash2 className="w-4 h-4 mr-2" />
+                                            {deletingChatId === chat._id ? "Deleting..." : "Delete"}
+                                        </Button>
+                                    </CardContent>
+                                </Card>
+                            </Link>
                         ))}
                     </div>
                 </div>
