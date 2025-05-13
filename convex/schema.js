@@ -7,6 +7,16 @@ export default defineSchema({
     email: v.string(),
     picture: v.string(),
     credits: v.number(),
-    paymentId: v.optional(v.string()),
-  }),
+  }).index("by_email", ["email"]),
+  chats: defineTable({
+    userEmail: v.string(),
+    personality: v.string(),
+    messages: v.array(
+      v.object({
+        role: v.string(),
+        content: v.string(),
+      })
+    ),
+    timestamp: v.number(),
+  }).index("by_userEmail", ["userEmail"]),
 });
